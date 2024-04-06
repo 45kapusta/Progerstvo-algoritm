@@ -1,0 +1,51 @@
+class Inventory:
+    def __init__(self):
+        self.items = []
+
+    def add_item(self, item):
+        self.items.append(item)
+
+    def remove_item(self, item):
+        self.items.remove(item)
+
+    def view_inventory(self):
+        if self.items:
+            print("Ваш инвентарь содержит:")
+            for item in self.items:
+                print("-", item)
+        else:
+            print("Ваш инвентарь пуст.")
+
+def main():
+    inventory = Inventory()
+
+    while True:
+        print("\nВыберите действие:")
+        print("1. Добавить предмет в инвентарь")
+        print("2. Удалить предмет из инвентаря")
+        print("3. Просмотреть инвентарь")
+        print("4. Выйти из программы")
+
+        choice = input("Введите номер действия: ")
+
+        if choice == "1":
+            item = input("Введите название предмета для добавления: ")
+            inventory.add_item(item)
+            print(item, "добавлен в инвентарь.")
+        elif choice == "2":
+            item = input("Введите название предмета для удаления: ")
+            if item in inventory.items:
+                inventory.remove_item(item)
+                print(item, "удален из инвентаря.")
+            else:
+                print("Такого предмета нет в инвентаре.")
+        elif choice == "3":
+            inventory.view_inventory()
+        elif choice == "4":
+            print("Выход из программы.")
+            break
+        else:
+            print("Неверный ввод. Попробуйте снова.")
+
+if __name__ == "__main__":
+    main()
