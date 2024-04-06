@@ -1,0 +1,68 @@
+import random
+
+class QAApp:
+    def __init__(self):
+        self.questions = {}
+
+    def add_question(self, question, answer):
+        self.questions[question] = answer
+        print("Вопрос успешно добавлен.")
+
+    def edit_question(self, question, new_answer):
+        if question in self.questions:
+            self.questions[question] = new_answer
+            print("Вопрос успешно отредактирован.")
+        else:
+            print("Вопрос не найден.")
+
+    def delete_question(self, question):
+        if question in self.questions:
+            del self.questions[question]
+            print("Вопрос успешно удален.")
+        else:
+            print("Вопрос не найден.")
+
+    def generate_random_question(self):
+        if not self.questions:
+            print("Список вопросов пуст.")
+            return
+        random_question = random.choice(list(self.questions.keys()))
+        print("Случайный вопрос: ", random_question)
+        answer = input("Введите ответ: ")
+        if answer.lower() == self.questions[random_question].lower():
+            print("Верно!")
+        else:
+            print("Неверно. Правильный ответ:", self.questions[random_question])
+
+    def menu(self):
+        while True:
+            print("\nМеню:")
+            print("1. Добавить вопрос")
+            print("2. Редактировать вопрос")
+            print("3. Удалить вопрос")
+            print("4. Сгенерировать случайный вопрос")
+            print("5. Выйти из программы")
+            choice = input("Выберите действие: ")
+
+            if choice == "1":
+                question = input("Введите вопрос: ")
+                answer = input("Введите ответ: ")
+                self.add_question(question, answer)
+            elif choice == "2":
+                question = input("Введите вопрос для редактирования: ")
+                new_answer = input("Введите новый ответ: ")
+                self.edit_question(question, new_answer)
+            elif choice == "3":
+                question = input("Введите вопрос для удаления: ")
+                self.delete_question(question)
+            elif choice == "4":
+                self.generate_random_question()
+            elif choice == "5":
+                print("До свидания!")
+                break
+            else:
+                print("Некорректный ввод. Пожалуйста, выберите действие из меню.")
+
+if __name__ == "__main__":
+    app = QAApp()
+    app.menu()
