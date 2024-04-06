@@ -1,0 +1,44 @@
+import random
+
+def main():
+
+    print("Добро пожаловать в игру 'Угадай число'!")
+    nickname = input("Пожалуйста, введите ваш никнейм: ")
+    print("\nПравила игры:")
+    print("ПК загадает 4-значное число, а вы должны угадать хотя бы одну цифру.")
+    print("В случае успеха вы получите 10 очков, в противном случае потеряете одну жизнь из трех.")
+    print("Вы можете в любой момент завершить игру, нажав клавишу 'E'.")
+
+    score = 0
+    lives = 3
+    record = 0
+
+    while lives > 0:
+        pc_number = str(random.randint(1000, 9999))
+        user_input = input("\nВведите число от 0 до 9: ")
+
+        if user_input.lower() == 'e':
+            break
+
+        if any(digit in pc_number for digit in user_input):
+            print("Поздравляем! Вы угадали как минимум одну цифру!")
+            score += 10
+        else:
+            lives -= 1
+            print(f"К сожалению, вы не угадали. Осталось жизней: {lives}")
+
+        if score > record:
+            record = score
+
+    print(f"\nИгра завершена, {nickname}!")
+    print(f"Ваш счет: {score}")
+    print(f"Ваш рекорд: {record}")
+
+    repeat = input("Хотите сыграть еще раз? (да/нет): ")
+    if repeat.lower() == "да":
+        main()
+    else:
+        print("Спасибо за игру!")
+
+if __name__ == "__main__":
+    main()
