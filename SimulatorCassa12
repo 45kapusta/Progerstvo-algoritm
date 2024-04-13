@@ -10,12 +10,11 @@ def calculate_change(product_price, amount_paid, available_coins):
             available_coins[coin] -= 1
 
     if change > 0:
-        return None  # не удалось найти сдачу из-за нехватки монет
-    else:
+        return None  
         return change_coins
 
 def main():
-    products = {}  # словарь для хранения продуктов и их цен
+    products = {}  
     num_products = int(input("Введите количество продуктов: "))
     for i in range(num_products):
         product = input(f"Введите название продукта {i+1}: ")
@@ -26,7 +25,7 @@ def main():
     for product, price in products.items():
         print(f"{product}: {price}р")
 
-    # Запрашиваем количество монет каждого номинала в кассе
+   
     available_coins = {}
     for coin in [20, 15, 10, 5, 1]:
         available_coins[coin] = int(input(f"Введите количество монет номиналом {coin}р в кассе: "))
