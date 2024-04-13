@@ -1,2 +1,3 @@
 # Progerstvo-algoritm
-DZ
+Плотников Даниил 9-ИС205
+ДЗ
