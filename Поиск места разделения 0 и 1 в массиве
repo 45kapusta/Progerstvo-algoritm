@@ -1,0 +1,28 @@
+def find_transition_index(arr):
+    left, right = 0, len(arr) - 1
+    transition_index = -1
+
+    while left <= right:
+        mid = (left + right) // 2
+
+
+        if arr[mid] == 1 and arr[mid - 1] == 0:
+            transition_index = mid
+            break
+
+        elif arr[mid] == 0:
+            left = mid + 1
+
+        else:
+            right = mid - 1
+
+    return transition_index
+
+
+
+arr = [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1]
+result = find_transition_index(arr)
+if result != -1:
+    print(f"Место разделения: Индекс {result}")
+else:
+    print("Разделение не найдено.")
