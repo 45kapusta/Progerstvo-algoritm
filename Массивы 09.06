@@ -1,0 +1,50 @@
+Задача 1: Проверка простого числа
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    for i in range(2, int(abs(num)**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+numbers1 = [12, -45, 67, -34, 89, -100, 23, -5, 34]
+prime_results = {num: is_prime(num) for num in numbers1}
+
+print("Простые числа в массиве:")
+for num, is_prime_num in prime_results.items():
+    if is_prime_num:
+        print(num)
+
+
+
+Задача 2: Сумма чисел в массиве
+
+numbers2 = [-90, 56, -23, 12, 45, -67, 89, -32, 11, -76, 54]
+sum_of_numbers = sum(numbers2)
+
+print(f"\nСумма всех чисел в массиве: {sum_of_numbers}")
+
+
+
+Задача 3: Подсчет положительных и отрицательных чисел в массиве
+
+numbers3 = [3, -15, 27, -48, 59, -6, 14, -38, 72, -94, 18, -12]
+
+positive_count = len([num for num in numbers3 if num > 0])
+negative_count = len([num for num in numbers3 if num < 0])
+
+print(f"\nКоличество положительных чисел: {positive_count}")
+print(f"Количество отрицательных чисел: {negative_count}")
+
+
+
+Задача 4: Найти наибольшее и наименьшее число в массиве
+
+numbers4 = [-22, 45, -67, 34, -89, 100, -23, 5, -34, 78]
+
+max_number = max(numbers4)
+min_number = min(numbers4)
+
+print(f"\nНаибольшее число в массиве: {max_number}")
+print(f"Наименьшее число в массиве: {min_number}")
